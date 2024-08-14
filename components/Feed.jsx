@@ -1,7 +1,12 @@
 import React from "react";
+import TrendingFeed from "./TrendingFeed";
 
 const Feed = () => {
-  return <div>Feed</div>;
+  return (
+    <div>
+      <TrendingFeed />
+    </div>
+  );
 };
 
 export default Feed;

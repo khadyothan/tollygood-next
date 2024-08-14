@@ -1,3 +1,5 @@
+import Feed from "@components/Feed";
+
 const Home = () => {
   return (
     <section className="w-full flex-center flex-col">
@@ -11,6 +13,7 @@ const Home = () => {
       <p className="desc text-center">
         Tollygood is a one stop platform for film news and reviews
       </p>
+      <Feed />
     </section>
   );
 };
