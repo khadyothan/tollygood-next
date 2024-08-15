@@ -8,7 +8,7 @@ const TrendingFeed = () => {
     <div className="mt-16 grid grid-cols-12 px-0">
       {/* Main News Section */}
       <div className="col-span-7 relative overflow-hidden rounded-lg p-6">
-        <TrendingFeedNews news={reviews[0]} />
+        <TrendingFeedNews news={reviews[5]} />
       </div>
 
       {/* Sidebar with Top Reviews */}
@@ -23,8 +23,8 @@ const TrendingFeed = () => {
           </div>
         </h2>
         <div className="space-y-4">
-          <TrendingFeedReview review={reviews[1]} />
-          <TrendingFeedReview review={reviews[2]} />
+          <TrendingFeedReview review={reviews[3]} />
+          <TrendingFeedReview review={reviews[4]} />
         </div>
       </div>
     </div>

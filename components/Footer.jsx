@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white w-full fixed bottom-0 py-10">
+    <footer className="bg-gray-800 text-white w-full mt-36 py-10">
       <div className="container mx-auto text-center">
         <p className="text-lg" style={{ color: "orange" }}>
           tollygood.com
