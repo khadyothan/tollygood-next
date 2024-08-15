@@ -1,5 +1,5 @@
 import React from "react";
-import TrendingFeed from "./TrendingFeed";
+import TrendingFeed from "./TrendingFeed/TrendingFeed.jsx";
 
 const Feed = () => {
   return (
