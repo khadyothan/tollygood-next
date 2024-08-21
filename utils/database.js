@@ -1,26 +1,26 @@
-import pg from "pg";
+import { Pool } from "pg";
 
-let isConnected = false;
-let client;
+let pool;
 
 export const connectToDB = async () => {
-  if (isConnected) {
-    console.log("Database is already connected");
-  }
-
-  try {
-    client = new pg.Client({
+  if (!pool) {
+    pool = new Pool({
       user: "postgres",
       host: "localhost",
       database: "tollygood",
       password: "khadyulocaldatabase",
       port: 5432,
     });
-    await client.connect();
-    isConnected = true;
-    console.log("PostgreSQL connected");
-    return client;
-  } catch (error) {
-    console.log(error);
+
+    // Test the connection to ensure it's working
+    try {
+      await pool.query("SELECT NOW()");
+      console.log("PostgreSQL connected");
+    } catch (error) {
+      console.error("Failed to connect to PostgreSQL:", error);
+      throw error;
+    }
   }
+
+  return pool;
 };

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ReviewCard = ({ review }) => {
+  console.log(review);
   return (
     <div className="flex gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
       <Image
@@ -21,8 +22,9 @@ const ReviewCard = ({ review }) => {
         <p className="text-sm text-gray-600 mt-2">
           {review.review_content.substring(0, 100)}...
         </p>
-        <Link href={`/news/${review.id}`}>
-          <button className="outline_btn mt-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200">
+        <p className="text-xs mt-3">Published on {review.created_at}</p>
+        <Link href={`/reviews/${review.id}`}>
+          <button className="outline_btn px-4 mt-1 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200">
             Read
           </button>
         </Link>

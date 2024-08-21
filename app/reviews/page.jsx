@@ -21,10 +21,10 @@ const Reviews = () => {
     }
 
     fetchReviews();
-  }, []); // Empty dependency array means this effect runs once when the component mounts
+  }, []);
 
   return (
-    <div>
+    <div className="grid grid-cols-3 gap-6">
       {reviews.length > 0 ? (
         reviews.map((review, index) => (
           <ReviewCard key={review.id} review={review} />

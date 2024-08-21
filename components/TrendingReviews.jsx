@@ -1,18 +1,45 @@
-import React from "react";
-import ReviewCard from "./ReviewCard";
-import reviews from "@data/reviews";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import ReviewCard from "@components/ReviewCard";
+import Link from "next/link";
+// import reviews from "@data/reviews";
 
 const TrendingReviews = () => {
+  const [trendingReviews, setTrendingReviews] = useState([]);
+  useEffect(() => {
+    async function fetchReviews() {
+      try {
+        const response = await fetch("/api/review", {
+          method: "GET",
+        });
+        const data = await response.json();
+        setTrendingReviews(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchReviews();
+  }, []);
+
   return (
     <div className="mt-14">
       <p>Trending Reviews</p>
-      <div className="flex gap-6">
-        <ReviewCard review={reviews[5]} />
-        <ReviewCard review={reviews[1]} />
-        <ReviewCard review={reviews[2]} />
-      </div>
+      {trendingReviews.length > 0 ? (
+        <div className="flex gap-6">
+          <ReviewCard review={trendingReviews[0]} />
+          <ReviewCard review={trendingReviews[1]} />
+          <ReviewCard review={trendingReviews[2]} />
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
+
       <div className="mt-4 flex justify-center">
-        <button className="black_btn">See More</button>
+        <Link href="/reviews">
+          <button className="black_btn">See More</button>
+        </Link>
       </div>
     </div>
   );
