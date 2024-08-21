@@ -27,7 +27,7 @@ const Reviews = () => {
     <div>
       {reviews.length > 0 ? (
         reviews.map((review, index) => (
-          <ReviewCard key={index} review={review} />
+          <ReviewCard key={review.id} review={review} />
         ))
       ) : (
         <p>No reviews available</p>
