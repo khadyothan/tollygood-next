@@ -27,7 +27,7 @@ const TrendingReviews = () => {
     <div className="mt-14">
       <p>Trending Reviews</p>
       {trendingReviews.length > 0 ? (
-        <div className="flex gap-6">
+        <div className="grid grid-cols-3 gap-4 justify-evenly">
           <ReviewCard review={trendingReviews[0]} />
           <ReviewCard review={trendingReviews[1]} />
           <ReviewCard review={trendingReviews[2]} />

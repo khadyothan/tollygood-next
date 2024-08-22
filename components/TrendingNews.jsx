@@ -6,7 +6,7 @@ const TrendingNews = () => {
   return (
     <div className="mt-14">
       <p>Trending News</p>
-      <div className="flex gap-4 justify-evenly">
+      <div className="grid grid-cols-3 gap-4 justify-evenly">
         <NewsCard news={reviews[0]} />
         <NewsCard news={reviews[3]} />
         <NewsCard news={reviews[2]} />
