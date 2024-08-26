@@ -2,11 +2,32 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ReviewCard = ({ review }) => {
-  // async function handleEdit(id) {
-  //   await fetch("/api/review/edit", {
-  //     method: "POST",
-  //   });
-  // }
+  const handleDelete = async (id) => {
+    const confirmDelete = confirm(
+      "Are you sure you want to delete this review?"
+    );
+
+    if (!confirmDelete) {
+      return;
+    }
+    try {
+      const response = await fetch(`/api/review/delete`, {
+        method: "DELETE",
+        body: JSON.stringify({
+          id: id,
+        }),
+      });
+      if (response.ok) {
+        alert("Review deleted successfully");
+        router.push("/reviews");
+      } else {
+        alert("Failed to delete the review");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
       <Image
@@ -37,7 +58,13 @@ const ReviewCard = ({ review }) => {
             <button>Edit</button>
           </Link>
 
-          <button>Delete</button>
+          <button
+            onClick={() => {
+              handleDelete(review.id);
+            }}
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

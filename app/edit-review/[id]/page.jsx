@@ -10,6 +10,7 @@ const EditReview = () => {
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
   const [review, setReview] = useState({
+    id: id,
     movieTitle: "",
     reviewTitle: "",
     reviewContent: "",
@@ -25,6 +26,7 @@ const EditReview = () => {
           });
           const data = await response.json();
           setReview({
+            id: data.id,
             movieTitle: data.movie_title,
             reviewTitle: data.review_title,
             reviewContent: data.review_content,
@@ -45,9 +47,10 @@ const EditReview = () => {
     e.preventDefault();
     setSubmitting(true);
     try {
-      const response = await fetch(`/api/review/${id}`, {
-        method: "POST",
+      const response = await fetch(`/api/review/edit/${id}`, {
+        method: "PATCH",
         body: JSON.stringify({
+          id: review.id,
           movieTitle: review.movieTitle,
           reviewTitle: review.reviewTitle,
           reviewContent: review.reviewContent,
